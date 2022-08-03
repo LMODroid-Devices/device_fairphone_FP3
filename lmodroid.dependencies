@@ -1,5 +1,6 @@
 [
   {
+    "remote": "lineage",
     "repository": "android_kernel_fairphone_sdm632",
     "target_path": "kernel/fairphone/sdm632"
   }
