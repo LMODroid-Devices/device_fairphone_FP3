@@ -23,6 +23,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+
+# System properties
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -94,11 +98,46 @@ PRODUCT_PACKAGES += \
 
 # Disable skip validate
 PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.display.disable_skip_validate=1
+    vendor.display.disable_skip_validate=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.gralloc.disable_ahardware_buffer=1
+
+#
+# system prop for opengles version
+#
+# 196608 is decimal for 0x30000 to report major/minor versions as 3/0
+# 196609 is decimal for 0x30001 to report major/minor versions as 3/1
+# 196610 is decimal for 0x30002 to report major/minor versions as 3/2
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196610
+
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.vulkan=adreno
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.egl=adreno
+
+# Encryption
+PRODUCT_PROPERTY_OVERRIDES += ro.crypto.allow_encrypt_override=true
+PRODUCT_PROPERTY_OVERRIDES += ro.crypto.volume.filenames_mode=aes-256-cts
+
+# FRP
+PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/bootdevice/by-name/config
+
+# Keystore
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.keystore_desede=true
 
 # LED packages
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.msm8953
+
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
+# IPV4
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.data.profile_update=true
+
+PRODUCT_PROPERTY_OVERRIDES += ro.telephony.iwlan_operation_mode=legacy
 
 #INIT
 PRODUCT_PACKAGES += \
@@ -149,6 +188,10 @@ PRODUCT_PACKAGES += \
     camera.device@3.2-impl:32 \
     libbson.vendor \
     libxml2
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.camera.isp.clock.optmz=0 \
+    persist.vendor.camera.lib2d.rotation=on
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -245,13 +288,11 @@ AUDIO_HAL_PATH := hardware/qcom-caf/msm8953/audio
 PRODUCT_COPY_FILES += \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    $(AUDIO_HAL_PATH)/configs/msm8953/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_platform_info_sku3_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_sku3_tasha.xml \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_platform_info_sku4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_sku4.xml \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_platform_info_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha.xml \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_platform_info_tashalite.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tashalite.xml \
-    $(AUDIO_HAL_PATH)/configs/msm8953/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(AUDIO_HAL_PATH)/configs/msm8953/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
     $(AUDIO_HAL_PATH)/configs/msm8953/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
     $(AUDIO_HAL_PATH)/configs/msm8953/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml \
@@ -280,6 +321,8 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS += $(AUDIO_HAL_PATH)/configs/common/overlay
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths_tashalite.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tashalite.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
 
@@ -301,6 +344,8 @@ PRODUCT_COPY_FILES += \
 # Media / StagefrightCodec 2.0
 PRODUCT_PACKAGES += \
     libstagefright_ccodec
+
+PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.omx_default_rank=0
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -352,6 +397,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml \
     $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.qcomsysd.enabled=1 \
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    sys.vendor.shutdown.waittime=500
+
 # Enable vndk-sp Libraries
 PRODUCT_PACKAGES += \
     libgui_vendor:32 \
@@ -389,6 +439,9 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4-service.clearkey
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
 
 # Power
 PRODUCT_PACKAGES += \
@@ -483,6 +536,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.backup.ntpServer=0.pool.ntp.org
+
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
@@ -517,9 +573,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor
 
+# RIL properties
+PRODUCT_PROPERTY_OVERRIDES += vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 #vendor prop to disable advanced network scanning
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.radio.enableadvancedscan=false
+    persist.vendor.radio.enableadvancedscan=false
+# Enable Dual SIM by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.multisim.config=dsds
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
+    persist.vendor.radio.sib16_support=1 \
+    persist.vendor.radio.custom_ecc=1 \
+    persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.procedure_bytes=SKIP
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -558,6 +626,9 @@ PRODUCT_PACKAGES += \
 # NFC Config
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.nfc_nci=nqx.default
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
