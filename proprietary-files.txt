@@ -1,4 +1,4 @@
-# All unpinned blobs are extracted from FP3-REL-8901.4.A.0013.4-gms-c1b5afb7-user
+# All unpinned blobs are extracted from FP3-REL-8901.4.A.0016.6-gms-f0c20986-user
 
 # System partition
 
@@ -2629,7 +2629,7 @@ vendor/lib/libmmcamera_ppeiscore.so
 vendor/lib/libmmcamera_puya_s5kgm1sp_p24c64e_eeprom.so
 vendor/lib/libmmcamera_qtech_f3l8yam_eeprom.so
 vendor/lib/libmmcamera_qtech_f5670bq_eeprom.so
-vendor/lib/libmmcamera_quadracfa.so
+vendor/lib/libmmcamera_quadracfa.so|587fcf95fc1863c17b2d80e837acc288e0db4a71
 vendor/lib/libmmcamera_rohm_brcg064gwz_3_eeprom.so
 vendor/lib/libmmcamera_s5k2l7.so
 vendor/lib/libmmcamera_s5k2l7sx.so
@@ -2928,7 +2928,6 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/egl/libq3dtools_adreno.so
 vendor/lib64/egl/libq3dtools_esx.so
-vendor/lib64/ftm_fm_lib.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
