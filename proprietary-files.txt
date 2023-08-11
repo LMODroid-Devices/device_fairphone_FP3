@@ -1,4 +1,4 @@
-# All unpinned blobs are extracted from FP3-REL-8901.4.A.0021.0-gms-0b368514-user
+# All unpinned blobs are extracted from FP3-REL-6.A.018.0-gms-1f4b2a90-user
 
 # System partition
 
@@ -29,20 +29,13 @@ lib/hw/vendor.qti.hardware.qccsyshal@1.0-impl.so
 lib/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
 lib/libFileMux.so
 lib/libOmxMux.so
-lib/libarcsoft_panorama_burstcapture.so
-lib/libjni_burstpmk.so
-lib/libjni_imageutil.so
-lib/libjni_snapcammosaic.so
-lib/libjni_snapcamtinyplanet.so
 lib/libmiracastsystem.so
 lib/libmmcamera_faceproc.so
 lib/libmmcamera_faceproc2.so
 lib/libmmrtpdecoder.so
 lib/libmmrtpencoder.so
-lib/libmpbase.so
 lib/libsdm-disp-apis.so
 lib/libseemore.so
-lib/libsensorndkbridge.so
 lib/libsigmautils.so
 lib/libwfdavenhancements.so
 lib/libwfdclient.so
@@ -71,20 +64,13 @@ lib64/hw/vendor.qti.hardware.qccsyshal@1.0-impl.so
 lib64/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
 lib64/libFileMux.so
 lib64/libOmxMux.so
-lib64/libarcsoft_panorama_burstcapture.so
-lib64/libjni_burstpmk.so
-lib64/libjni_imageutil.so
-lib64/libjni_snapcammosaic.so
-lib64/libjni_snapcamtinyplanet.so
 lib64/libmiracastsystem.so
 lib64/libmmcamera_faceproc.so
 lib64/libmmcamera_faceproc2.so
 lib64/libmmrtpdecoder.so
 lib64/libmmrtpencoder.so
-lib64/libmpbase.so
 lib64/libsdm-disp-apis.so
 lib64/libseemore.so
-lib64/libsensorndkbridge.so
 lib64/libsigmautils.so
 lib64/libwfdclient.so
 lib64/libwfdnative.so
@@ -114,6 +100,7 @@ product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 -system_ext/app/SimContact/SimContact.apk
 -system_ext/app/atfwd/atfwd.apk
+-system_ext/app/datastatusnotification/datastatusnotification.apk
 -system_ext/app/embms/embms.apk
 -system_ext/app/imssettings/imssettings.apk
 -system_ext/app/remotesimlockservice/remotesimlockservice.apk
@@ -121,7 +108,6 @@ product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml
 -system_ext/app/uimlpaservice/uimlpaservice.apk
 -system_ext/app/uimremoteclient/uimremoteclient.apk
 -system_ext/app/uimremoteserver/uimremoteserver.apk
--system_ext/app/workloadclassifier/workloadclassifier.apk
 -system_ext/app/xdivert/xdivert.apk
 
 # bin
@@ -278,7 +264,6 @@ system_ext/lib/libmmosal.so
 system_ext/lib/libmmparser_lite.so
 system_ext/lib/libmwqemiptablemgr.so
 system_ext/lib/libnqnfc-nci.so
-system_ext/lib/libnqnfc_nci_jni.so
 system_ext/lib/libqcc.so
 system_ext/lib/libqcc_file_agent_sys.so
 system_ext/lib/libqct_resampler.so
@@ -288,8 +273,6 @@ system_ext/lib/libqti-at.so
 system_ext/lib/libqti-iopd-client_system.so
 system_ext/lib/libqti-perfd-client_system.so
 system_ext/lib/libqti-util_system.so
-system_ext/lib/libqti_performance.so
-system_ext/lib/libqti_workloadclassifiermodel.so
 system_ext/lib/libsdsprpc_system.so
 system_ext/lib/libseccam-ipc.so
 system_ext/lib/libseccam.so
@@ -445,7 +428,6 @@ system_ext/lib64/libmmparser_lite.so
 system_ext/lib64/libmsp.so
 system_ext/lib64/libmwqemiptablemgr.so
 system_ext/lib64/libnqnfc-nci.so
-system_ext/lib64/libnqnfc_nci_jni.so
 system_ext/lib64/libqcc.so
 system_ext/lib64/libqcc_file_agent_sys.so
 system_ext/lib64/libqmi_cci_system.so
@@ -454,8 +436,6 @@ system_ext/lib64/libqti-at.so
 system_ext/lib64/libqti-iopd-client_system.so
 system_ext/lib64/libqti-perfd-client_system.so
 system_ext/lib64/libqti-util_system.so
-system_ext/lib64/libqti_performance.so
-system_ext/lib64/libqti_workloadclassifiermodel.so
 system_ext/lib64/libsdsprpc_system.so
 system_ext/lib64/libseccam-ipc.so
 system_ext/lib64/libseccam.so
@@ -1032,6 +1012,7 @@ vendor/lib/libarcsoft_high_dynamic_range.so
 vendor/lib/libarcsoft_low_light_hdr.so
 vendor/lib/libarcsoft_low_light_shot.so
 vendor/lib/libarcsoft_object_tracking.so
+vendor/lib/libarcsoft_panorama_burstcapture.so
 vendor/lib/libarcsoft_singlecam_bokeh.so
 vendor/lib/libarcsoft_videoautozoom.so
 vendor/lib/libarcsoft_videostabs.so
@@ -1138,7 +1119,6 @@ vendor/lib/libchromatix_s5k3p9sp_common.so
 vendor/lib/libchromatix_s5k3p9sp_cpp_liveshot.so
 vendor/lib/libchromatix_s5k3p9sp_cpp_preview.so
 vendor/lib/libchromatix_s5k3p9sp_cpp_snapshot.so
-vendor/lib/libchromatix_s5k3p9sp_cpp_snapshot_pro.so
 vendor/lib/libchromatix_s5k3p9sp_cpp_video.so
 vendor/lib/libchromatix_s5k3p9sp_liveshot.so
 vendor/lib/libchromatix_s5k3p9sp_postproc.so
@@ -1175,7 +1155,6 @@ vendor/lib/libchromatix_s5kgm1sp_cpp_hfr_90.so
 vendor/lib/libchromatix_s5kgm1sp_cpp_liveshot.so
 vendor/lib/libchromatix_s5kgm1sp_cpp_preview.so
 vendor/lib/libchromatix_s5kgm1sp_cpp_snapshot.so
-vendor/lib/libchromatix_s5kgm1sp_cpp_snapshot_pro.so
 vendor/lib/libchromatix_s5kgm1sp_cpp_snapshot_upscale.so
 vendor/lib/libchromatix_s5kgm1sp_cpp_video.so
 vendor/lib/libchromatix_s5kgm1sp_default_preview_3a.so
@@ -1231,6 +1210,7 @@ vendor/lib/libhdcpsrm.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libidl.so
 vendor/lib/libjnihelper.so
+vendor/lib/libjni_burstpmk.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
@@ -1471,7 +1451,6 @@ vendor/lib/libxml.so
 vendor/lib/libxtadapter.so
 vendor/lib/libxtwifi_server_protocol.so
 vendor/lib/libxtwifi_server_protocol_uri_v3.so
-vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/nfc_nci.nqx.default.hw.so
 vendor/lib/qcrild_librilutils.so
 vendor/lib/qtibus.so
@@ -1684,6 +1663,7 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
 vendor/lib64/libaoa.so
+vendor/lib64/libarcsoft_panorama_burstcapture.so
 vendor/lib64/libasn1cper.so
 vendor/lib64/libasn1crt.so
 vendor/lib64/libasn1crtx.so
@@ -1738,6 +1718,7 @@ vendor/lib64/libhdcpsrm.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libidl.so
 vendor/lib64/libjnihelper.so
+vendor/lib64/libjni_burstpmk.so
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
@@ -1770,6 +1751,7 @@ vendor/lib64/libmmcamera_faceproc2.so
 vendor/lib64/libmmcamera_tintless_algo.so
 vendor/lib64/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib64/libmmosal.so
+vendor/lib64/libmpbase.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libnetmgr.so
 vendor/lib64/libnetmgr_common.so
@@ -1870,7 +1852,6 @@ vendor/lib64/libxml.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_server_protocol.so
 vendor/lib64/libxtwifi_server_protocol_uri_v3.so
-vendor/lib64/mediadrm/libwvdrmengine.so
 vendor/lib64/nfc_nci.nqx.default.hw.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/qtibus.so
