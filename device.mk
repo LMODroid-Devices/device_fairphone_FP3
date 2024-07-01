@@ -212,6 +212,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.capabilityconfigstore@1.0 \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
 
 # Dalvik
 PRODUCT_VENDOR_PROPERTIES += \
@@ -689,9 +692,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    vendor.qti.hardware.vibrator.service
 
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # Enable vndk-sp Libraries
 PRODUCT_PACKAGES += \
